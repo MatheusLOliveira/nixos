@@ -3,6 +3,9 @@
   imports = [
     ./display-managers/hyprland/hyprland-home.nix
     #./display-managers/gnome-home.nix
+
+    ./programs/neovim
+    ./programs/neovide.nix
   ];
 
   home.packages = with pkgs; [ ];
