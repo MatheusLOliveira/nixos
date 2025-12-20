@@ -5,7 +5,7 @@
     enable = true;
 
     # Isso injeta o conteúdo do seu hyprland.conf dentro da config gerada pelo Nix
-    extraConfig = builtins.readFile ./hypr/hyprland.conf;
+    extraConfig = builtins.readFile ./hypr/hypr/hyprland.conf;
 
     settings = {
       binde = [
@@ -21,7 +21,9 @@
 
   #configFile"destiny".source = "where_is_the_file"
   xdg.configFile."waybar".source = ./hypr/waybar;
-  xdg.configFile."hypr/hyprlock.conf".source = ./hypr/hyprlock.conf;
+  xdg.configFile."rofi".source = ./hypr/rofi;
+  #xdg.configFile."wofi".source = ./hypr/wofi;
+  xdg.configFile."hypr/hyprlock.conf".source = ./hypr/hypr/hyprlock.conf;
 
   # Exemplo se você tiver uma pasta de scripts dentro de hypr:
   # xdg.configFile."hypr/scripts".source = ./hypr/scripts;
@@ -31,7 +33,8 @@
     hyprlock
     hypridle
     hyprpaper
-    wofi
+    #wofi
+    rofi
     waybar
     nautilus
     pamixer
