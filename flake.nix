@@ -1,5 +1,5 @@
 {
-  description = "A simple NixOS flake";
+  description = "My Config";
 
   inputs = {
     # NixOS official package source, using the unstable branch here
@@ -25,20 +25,23 @@
     {
       self,
       nixpkgs,
-      zen-browser,
+      home-manager,
+      stylix,
+    zen-browser,
       ...
     }
     @inputs: {
-    nixosConfigurations = {
-      math = nixpkgs.lib.nixosSystem { # Same name as networking.hostName
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; }; # Passa os inputs para dentro do config
-        modules = [
-          ./hosts/default/configuration.nix # Importa sua config antiga
-          inputs.home-manager.nixosModules.default
-          inputs.stylix.nixosModules.stylix
-        ];
-      };
+    	# Main PC
+    	nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
+        	system = "x86_64-linux";
+		
+		# specialArgs shares everything inside it to all the submodules
+        	specialArgs = { inherit inputs; };
+        	
+		modules = [
+          		./hosts/default/configuration.nix
+			./hosts/desktop/default.nix
+        	]
+    	};
     };
-  };
 }
