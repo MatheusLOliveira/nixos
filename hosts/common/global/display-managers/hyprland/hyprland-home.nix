@@ -38,6 +38,7 @@
     waybar
     nautilus
     pamixer
+    playerctl # Music on waybar
 
     wl-clipboard # Essencial para copiar/colar
     swaynotificationcenter # Central de notificações
@@ -58,4 +59,20 @@
     catppuccin-cursors.mochaBlue
     papirus-icon-theme
   ];
+
+  stylix.targets.gtk.enable = false;
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Kripton";
+    };
+
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+  };
+
+  xdg.dataFile."themes/Kripton".source = ../../themes/Kripton;
 }

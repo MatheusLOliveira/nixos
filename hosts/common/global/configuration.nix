@@ -1,23 +1,27 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [
-      # make home-manager as a module of nixos
-      # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
-      inputs.home-manager.nixosModules.default
+  imports = [
+    # make home-manager as a module of nixos
+    # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
+    inputs.home-manager.nixosModules.default
 
-      ./programs/zsh.nix
-      ./display-managers/hyprland/hyprland.nix
-    ];
+    ./programs/zsh.nix
+    ./display-managers/hyprland/hyprland.nix
+  ];
 
   #################
   ## Boot loader ##
   #################
 
   boot.loader = {
-  	systemd-boot.enable = true;
-  	efi.canTouchEfiVariables = true;
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
   };
 
   #################
@@ -37,16 +41,16 @@
   ################
 
   networking = {
-  	hostName = "math"; # Define your hostname.
-  	networkmanager.enable = true;
-  	networkmanager.dns = "none";
-  	nameservers = [
-  	  "1.1.1.1"
-  	  "1.0.0.1"
-  	  "8.8.8.8"
-  	  "8.8.4.4"
-  	];
-        firewall.enable = true;
+    hostName = "math"; # Define your hostname.
+    networkmanager.enable = true;
+    networkmanager.dns = "none";
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+      "8.8.8.8"
+      "8.8.4.4"
+    ];
+    firewall.enable = true;
   };
 
   ###########
@@ -57,11 +61,14 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "math";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     initialPassword = "12345";
     packages = with pkgs; [ ];
   };
-  
+
   ##################
   ## Home manager ##
   ##################
@@ -69,12 +76,11 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    
+
     backupFileExtension = "hm-backup";
 
     users.math = import ./home.nix;
   };
-
 
   ##################
   ## Localization ##
@@ -97,22 +103,23 @@
   #########
   ## NIX ##
   #########
-  
-  nix = { 
-  	gc = {
-    		automatic = true;
-    		dates = "weekly";
-    		options = "--delete-older-than 15d";
-	};
 
-	settings.experimental-features = [
-		"nix-command"
-		"flakes"
-	];
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 15d";
+    };
 
-	settings.trusted-users = [
-		"root" "math"
-	];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+
+    settings.trusted-users = [
+      "root"
+      "math"
+    ];
   };
 
   programs.nh = {
@@ -126,30 +133,36 @@
   ############
 
   stylix = {
-  	enable = true;
-	base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-	image = ../../../assets/backgrounds/nice-blue-background.png;
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+    image = ../../../assets/backgrounds/nice-blue-background.png;
 
-	cursor = {
-		package = pkgs.bibata-cursors;
-		name = "Bibata-Modern-Classic";
-		size = 23;
-	};
-	fonts = {
-		serif = {
-        	package = pkgs.dejavu_fonts;
-        	name = "DejaVu Serif";
-      	};
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 23;
+    };
 
-      	sansSerif = {
-        	package = pkgs.dejavu_fonts;
-        	name = "DejaVu Sans";
-      	};
+    opacity = {
+      terminal = 0.8;
+      popups = 0.8; # rofi opacity
+    };
 
-      	monospace = {
-        	package = pkgs.nerd-fonts.jetbrains-mono;
-        	name = "JetbrainsMono Nerd Font";
-      	};
+    fonts = {
+      serif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Serif";
+      };
+
+      sansSerif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Sans";
+      };
+
+      monospace = {
+        package = pkgs.nerd-fonts.caskaydia-cove;
+        name = "CaskaydiaCove Nerd Font Propo";
+      };
     };
   };
 
@@ -159,20 +172,19 @@
 
   # Enable the X11 windowing system.
   services.xserver = {
-  	enable = true;
-	
-	xkb = {
-		layout = "us";
-		variant = "alt-intl";
-	};
+    enable = true;
+
+    xkb = {
+      layout = "us";
+      variant = "alt-intl";
+    };
   };
   console.keyMap = "br-abnt2"; # Configure console keymap
-
 
   ##############
   ## Printing ##
   ##############
-  
+
   services.printing.enable = true; # Enable CUPS to print documents.
 
   ###########
@@ -194,10 +206,8 @@
   ## Programs ##
   ##############
 
-  
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -208,10 +218,10 @@
   };
 
   programs = {
-     firefox.enable = true;
-     steam.enable = true;
-     gamescope.enable = true;
-     steam.gamescopeSession.enable = true;  
+    firefox.enable = true;
+    steam.enable = true;
+    gamescope.enable = true;
+    steam.gamescopeSession.enable = true;
   };
 
   # List packages installed in system profile. To search, run:
@@ -243,29 +253,29 @@
     mangohud
     bottles
     heroic
-    (steam.override {extraPkgs = p: [p.gamescope];})
+    (steam.override { extraPkgs = p: [ p.gamescope ]; })
     gamescope
     protontricks
     spotify
 
-    (
-      # This might require a restart to fully work (terminal commands runs, but it doesnt show up in the launchpad)
-      symlinkJoin {
-        name = "kitty";
-        buildInputs = [ makeWrapper ];
-        paths = [ kitty ];
-        postBuild = ''
-          	  wrapProgram $out/bin/kitty --append-flags "--config ${./configs/kitty.conf}"
-          	'';
-      }
-    )
+    #(
+    #  # This might require a restart to fully work (terminal commands runs, but it doesnt show up in the launchpad)
+    #  symlinkJoin {
+    #    name = "kitty";
+    #    buildInputs = [ makeWrapper ];
+    #    paths = [ kitty ];
+    #    postBuild = ''
+    #      	  wrapProgram $out/bin/kitty --append-flags "--config ${./configs/kitty.conf}"
+    #      	'';
+    #  }
+    #)
   ];
 
   fonts.packages = with pkgs; [
-     nerd-fonts.fira-code
-     nerd-fonts.jetbrains-mono
-     nerd-fonts.symbols-only
-     nerd-fonts.caskaydia-cove # Versão Nerd da Cascadia Code
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.symbols-only
+    nerd-fonts.caskaydia-cove # Versão Nerd da Cascadia Code
   ];
 
   ############

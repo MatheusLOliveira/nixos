@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   imports = [
     ./display-managers/hyprland/hyprland-home.nix
@@ -6,6 +11,7 @@
 
     ./programs/neovim
     ./programs/neovide.nix
+    ./programs/kitty.nix
   ];
 
   home.packages = with pkgs; [ ];
