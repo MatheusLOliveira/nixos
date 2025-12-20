@@ -8,7 +8,7 @@
       inputs.home-manager.nixosModules.default
 
       ./programs/zsh.nix
-      ./display-managers/hyprland.nix
+      ./display-managers/hyprland/hyprland.nix
     ];
 
   #################
@@ -127,7 +127,7 @@
 
   stylix = {
   	enable = true;
-	base15Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+	base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 	image = ../../../assets/backgrounds/nice-blue-background.png;
 
 	cursor = {
@@ -164,9 +164,9 @@
 	xkb = {
 		layout = "us";
 		variant = "alt-intl";
-	}
+	};
   };
-  console.keyMap = "bt-agnt2"; # Configure console keymap
+  console.keyMap = "br-abnt2"; # Configure console keymap
 
 
   ##############

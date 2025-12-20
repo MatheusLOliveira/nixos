@@ -12,5 +12,5 @@
     xwayland.enable = true; # Xwayland can be disabled.
   };
   services.xserver.enable = true;
-  package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  #package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 }

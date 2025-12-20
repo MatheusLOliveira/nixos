@@ -18,7 +18,10 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
-    stylix.url = "github:danth/stylix";
+    stylix = { 
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -39,9 +42,11 @@
         	specialArgs = { inherit inputs; };
         	
 		modules = [
-          		./hosts/default/configuration.nix
+          		./hosts/common/global/configuration.nix
 			./hosts/desktop/default.nix
-        	]
+
+			inputs.stylix.nixosModules.stylix
+        	];
     	};
     };
 }

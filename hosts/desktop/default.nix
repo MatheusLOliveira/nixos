@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../common/global
+    ../common/global/configuration.nix
   ];
 
   # ... Suas configs de boot, rede, timezone ...
@@ -14,7 +14,7 @@
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
     # Ajuste o caminho do import conforme onde você deixou o arquivo
-    users.matheus = import ../../home.nix; 
+    users.math = import ../common/global/home.nix; 
   };
 
   #########

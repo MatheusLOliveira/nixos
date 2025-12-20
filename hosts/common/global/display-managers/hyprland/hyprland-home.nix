@@ -22,7 +22,7 @@
     hyprlock
     hypridle
     hyprpaper
-    rofi-wayland # ou wofi
+    rofi # ou wofi
     waybar
     
     wl-clipboard              # Essencial para copiar/colar
