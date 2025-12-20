@@ -277,6 +277,12 @@
     autoUpgrade.allowReboot = false;
   };
 
+  services = {
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
+    };
+  };
 
   # List services that you want to enable:
 

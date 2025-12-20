@@ -22,8 +22,9 @@
     hyprlock
     hypridle
     hyprpaper
-    rofi # ou wofi
+    wofi
     waybar
+    nautilus
     
     wl-clipboard              # Essencial para copiar/colar
     swaynotificationcenter    # Central de notificações
