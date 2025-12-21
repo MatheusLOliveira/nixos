@@ -6,16 +6,6 @@
 
     # Isso injeta o conteúdo do seu hyprland.conf dentro da config gerada pelo Nix
     extraConfig = builtins.readFile ./hypr/hypr/hyprland.conf;
-    #settings = {
-    #  binde = [
-    #    ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
-    #    ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-    #  ];
-    #
-    #  bind = [
-    #    ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-    #  ];
-    #};
   };
 
   #configFile"destiny".source = "where_is_the_file"
