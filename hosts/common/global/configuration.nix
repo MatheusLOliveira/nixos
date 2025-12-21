@@ -136,6 +136,7 @@
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
     image = ../../../assets/backgrounds/nice-blue-background.png;
+    polarity = "dark";
 
     cursor = {
       package = pkgs.bibata-cursors;
