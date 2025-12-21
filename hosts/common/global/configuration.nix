@@ -33,6 +33,8 @@
       # https://github.com/NixOS/nixpkgs/issues/239415#issuecomment-2575620570
       GTK_IM_MODULE = "cedilla";
       QT_IM_MODULE = "cedilla";
+
+      XCOMPOSEFILE = "/usr/share/X11/locale/pt_BR.UTF-8/Compose";
     };
   };
 
@@ -98,6 +100,7 @@
     LC_PAPER = "pt_BR.UTF-8";
     LC_TELEPHONE = "pt_BR.UTF-8";
     LC_TIME = "pt_BR.UTF-8";
+    LC_CTYPE = "pt_BR.UTF-8"; # Fix ç problem on hyprland
   };
 
   #########

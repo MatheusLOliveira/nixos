@@ -6,6 +6,22 @@
 
     # Isso injeta o conteúdo do seu hyprland.conf dentro da config gerada pelo Nix
     extraConfig = builtins.readFile ./hypr/hypr/hyprland.conf;
+
+    settings = {
+      input = {
+        kb_layout = "us";
+        kb_variant = "intl";
+        follow_mouse = 1;
+        sensitivity = -0.2;
+        numlock_by_default = true;
+
+        touchpad = {
+          natural_scroll = true;
+          clickfinger_behavior = true;
+          scroll_factor = 0.2;
+        };
+      };
+    };
   };
 
   #configFile"destiny".source = "where_is_the_file"
@@ -21,9 +37,6 @@
     "rofi".source = ./hypr/rofi;
     "swaync".source = ./hypr/swaync;
   };
-
-  # Exemplo se você tiver uma pasta de scripts dentro de hypr:
-  # xdg.configFile."hypr/scripts".source = ./hypr/scripts;
 
   # Pacotes extras que o Hyprland pode precisar e você usa na config
   home.packages = with pkgs; [
