@@ -5,28 +5,32 @@
     enable = true;
 
     # Isso injeta o conteúdo do seu hyprland.conf dentro da config gerada pelo Nix
-    #extraConfig = builtins.readFile ./hypr/hypr/hyprland-conf/;
-
-    settings = {
-      binde = [
-        ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
-        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-      ];
-
-      bind = [
-        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-      ];
-    };
+    extraConfig = builtins.readFile ./hypr/hypr/hyprland.conf;
+    #settings = {
+    #  binde = [
+    #    ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+    #    ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+    #  ];
+    #
+    #  bind = [
+    #    ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    #  ];
+    #};
   };
 
   #configFile"destiny".source = "where_is_the_file"
-  xdg.configFile."hypr".source = ./hypr/hypr;
-  xdg.configFile."waybar".source = ./hypr/waybar;
-  xdg.configFile."rofi".source = ./hypr/rofi;
   #xdg.configFile."wofi".source = ./hypr/wofi;
-  #xdg.configFile."hypr/hyprlock.conf".source = ./hypr/hypr/hyprlock.conf;
-  #xdg.configFile."hypr/hypridle.conf".source = ./hypr/hypr/hypridle.conf;
-  xdg.configFile."swaync".source = ./hypr/swaync;
+  xdg.configFile = {
+    #"hypr".source = ./hypr/hypr;
+
+    "hypr/hyprlock.conf".source = ./hypr/hypr/hyprlock.conf;
+    "hypr/scripts".source = ./hypr/hypr/scripts;
+    "hypr/configs".source = ./hypr/hypr/configs;
+
+    "waybar".source = ./hypr/waybar;
+    "rofi".source = ./hypr/rofi;
+    "swaync".source = ./hypr/swaync;
+  };
 
   # Exemplo se você tiver uma pasta de scripts dentro de hypr:
   # xdg.configFile."hypr/scripts".source = ./hypr/scripts;
@@ -35,7 +39,7 @@
   home.packages = with pkgs; [
     hyprlock
     hypridle
-    hyprpaper
+    #hyprpaper
     #wofi
     rofi
     waybar
