@@ -25,6 +25,7 @@
   #xdg.configFile."wofi".source = ./hypr/wofi;
   xdg.configFile."hypr/hyprlock.conf".source = ./hypr/hypr/hyprlock.conf;
   xdg.configFile."hypr/hypridle.conf".source = ./hypr/hypr/hypridle.conf;
+  xdg.configFile."swaync".source = ./hypr/swaync;
 
   # Exemplo se você tiver uma pasta de scripts dentro de hypr:
   # xdg.configFile."hypr/scripts".source = ./hypr/scripts;

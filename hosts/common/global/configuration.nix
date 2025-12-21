@@ -246,6 +246,9 @@
     curl
     starship
 
+    alacritty
+    htop
+
     # Development
     vscode
 
