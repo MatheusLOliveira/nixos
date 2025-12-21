@@ -5,7 +5,7 @@
     enable = true;
 
     # Isso injeta o conteúdo do seu hyprland.conf dentro da config gerada pelo Nix
-    extraConfig = builtins.readFile ./hypr/hypr/hyprland.conf;
+    #extraConfig = builtins.readFile ./hypr/hypr/hyprland-conf/;
 
     settings = {
       binde = [
@@ -20,11 +20,12 @@
   };
 
   #configFile"destiny".source = "where_is_the_file"
+  xdg.configFile."hypr".source = ./hypr/hypr;
   xdg.configFile."waybar".source = ./hypr/waybar;
   xdg.configFile."rofi".source = ./hypr/rofi;
   #xdg.configFile."wofi".source = ./hypr/wofi;
-  xdg.configFile."hypr/hyprlock.conf".source = ./hypr/hypr/hyprlock.conf;
-  xdg.configFile."hypr/hypridle.conf".source = ./hypr/hypr/hypridle.conf;
+  #xdg.configFile."hypr/hyprlock.conf".source = ./hypr/hypr/hyprlock.conf;
+  #xdg.configFile."hypr/hypridle.conf".source = ./hypr/hypr/hypridle.conf;
   xdg.configFile."swaync".source = ./hypr/swaync;
 
   # Exemplo se você tiver uma pasta de scripts dentro de hypr:
@@ -39,6 +40,7 @@
     rofi
     waybar
     nautilus
+    loupe
     pamixer
     playerctl # Music on waybar
 

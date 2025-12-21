@@ -134,8 +134,9 @@
 
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
-    image = ../../../assets/backgrounds/nice-blue-background.png;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-dark.yaml";
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+    image = ../../../assets/backgrounds/wallpapers/foggy_car_forest_blue_night_road.jpg;
     polarity = "dark";
 
     cursor = {
@@ -245,9 +246,6 @@
     vlc
     curl
     starship
-
-    alacritty
-    htop
 
     # Development
     vscode

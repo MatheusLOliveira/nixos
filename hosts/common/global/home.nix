@@ -39,6 +39,8 @@
     };
   };
 
+  home.file.".zen/7wd9f9n5.default/chrome".source = ./configs/zen/chrome;
+
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
