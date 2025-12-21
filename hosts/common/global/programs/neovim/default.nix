@@ -117,10 +117,10 @@
             name = "LuaSnip";
             path = luasnip;
           }
-          {
-            name = "catppuccin";
-            path = catppuccin-nvim;
-          }
+          #{
+          #  name = "catppuccin";
+          #  path = catppuccin-nvim;
+          #}
           {
             name = "mini.ai";
             path = mini-nvim;
