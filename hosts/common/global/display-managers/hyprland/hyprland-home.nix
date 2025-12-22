@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   # Habilita o módulo do Hyprland no Home Manager
   wayland.windowManager.hyprland = {
@@ -20,6 +20,23 @@
           clickfinger_behavior = true;
           scroll_factor = 0.2;
         };
+      };
+
+      general = {
+        # Espessura da borda (2 ou 3 fica elegante)
+        border_size = 2;
+
+        # Espaçamento entre janelas (Gaps) - Opcional, mas combina com o tema
+        gaps_in = 5;
+        gaps_out = 10;
+
+        # A MÁGICA DAS CORES:
+        # col.active: Gradiente de Azul Pastel (Ayu) para Cinza Escuro
+        # 45deg: O gradiente fica na diagonal
+        "col.active_border" = lib.mkForce "rgb(787C99)";
+
+        # col.inactive: Cinza bem escuro (quase preto) para não chamar atenção
+        "col.inactive_border" = lib.mkForce "rgb(1F2430)";
       };
     };
   };
