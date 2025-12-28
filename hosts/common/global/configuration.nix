@@ -66,6 +66,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
     initialPassword = "12345";
     packages = with pkgs; [ ];
@@ -301,6 +302,12 @@
 
     flatpak.enable = true;
   };
+
+  ####################
+  ## virtualisation ##
+  ####################
+  virtualisation.docker.enable = true;
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
