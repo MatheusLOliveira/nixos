@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -14,7 +19,7 @@
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
     # Ajuste o caminho do import conforme onde você deixou o arquivo
-    users.math = import ../common/global/home.nix; 
+    users.math = import ../common/global/home.nix;
   };
 
   #########
@@ -22,8 +27,8 @@
   #########
 
   hardware.graphics = {
-  	enable = true;
-	enable32Bit = true;
+    enable = true;
+    enable32Bit = true;
   };
   boot.initrd.kernelModules = [ "amdgpu" ];
 }

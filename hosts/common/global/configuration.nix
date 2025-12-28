@@ -253,6 +253,7 @@
     # Development
     vscode
     zed-editor
+    jetbrains.idea-ultimate
 
     # Games
     discord
