@@ -139,7 +139,7 @@
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-dark.yaml";
     #base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
-    image = ../../../assets/backgrounds/wallpapers/foggy_car_forest_blue_night_road.jpg;
+    image = ../../../assets/backgrounds/wallpapers/road_dark_car_trees_night_highway_fog_lights.jpg;
     polarity = "dark";
 
     cursor = {
@@ -252,13 +252,13 @@
 
     # Development
     vscode
+    zed-editor
 
     # Games
     discord
     mangohud
     bottles
     heroic
-    (steam.override { extraPkgs = p: [ p.gamescope ]; })
     gamescope
     protontricks
     spotify
@@ -297,8 +297,9 @@
       enable = true;
       wayland = true;
     };
-  };
 
+    flatpak.enable = true;
+  };
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.

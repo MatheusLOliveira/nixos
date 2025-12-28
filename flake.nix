@@ -18,10 +18,11 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
-    stylix = { 
+    stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
   outputs =
@@ -30,23 +31,23 @@
       nixpkgs,
       home-manager,
       stylix,
-    zen-browser,
+      zen-browser,
       ...
-    }
-    @inputs: {
-    	# Main PC
-    	nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
-        	system = "x86_64-linux";
-		
-		# specialArgs shares everything inside it to all the submodules
-        	specialArgs = { inherit inputs; };
-        	
-		modules = [
-          		./hosts/common/global/configuration.nix
-			./hosts/desktop/default.nix
+    }@inputs:
+    {
+      # Main PC
+      nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
 
-			inputs.stylix.nixosModules.stylix
-        	];
-    	};
+        # specialArgs shares everything inside it to all the submodules
+        specialArgs = { inherit inputs; };
+
+        modules = [
+          ./hosts/common/global/configuration.nix
+          ./hosts/desktop/default.nix
+
+          inputs.stylix.nixosModules.stylix
+        ];
+      };
     };
 }
